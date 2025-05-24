@@ -1,0 +1,181 @@
+/* TurboLlama Custom Theme */
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary-color: #64748b;
+    --background-color: #ffffff;
+    --surface-color: #f8fafc;
+    --border-color: #e2e8f0;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --error-color: #ef4444;
+    --border-radius: 12px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Global styles */
+.gradio-container {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Header styling */
+.header-container {
+    background: linear-gradient(135deg, var(--surface-color) 0%, #f1f5f9 100%);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Chat interface */
+.chatbot-container {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--background-color);
+    box-shadow: var(--shadow);
+}
+
+.message-container {
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: var(--border-radius);
+    max-width: 80%;
+}
+
+.user-message {
+    background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 4px;
+}
+
+.assistant-message {
+    background: var(--surface-color);
+    color: var(--text-primary);
+    border-bottom-left-radius: 4px;
+}
+
+/* Input styling */
+.input-container {
+    border: 2px solid var(--border-color);
+    border-radius: 24px;
+    transition: all 0.2s ease;
+    background: var(--background-color);
+}
+
+.input-container:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Button styling */
+.primary-button {
+    background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+    border: none;
+    color: white;
+    border-radius: 20px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.primary-button:hover {
+    background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.secondary-button {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.secondary-button:hover {
+    background: #e2e8f0;
+    transform: translateY(-1px);
+}
+
+/* Sidebar styling */
+.sidebar {
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+}
+
+/* Performance dashboard */
+.performance-modal {
+    background: var(--background-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .gradio-container {
+        padding: 0.5rem;
+    }
+    
+    .sidebar {
+        display: none;
+    }
+    
+    .message-container {
+        max-width: 95%;
+    }
+}
+
+/* Code highlighting */
+.code-block {
+    background: #1e293b;
+    color: #e2e8f0;
+    border-radius: 8px;
+    padding: 1rem;
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    overflow-x: auto;
+}
+
+/* Syntax highlighting colors */
+.hljs-keyword { color: #7c3aed; }
+.hljs-string { color: #10b981; }
+.hljs-comment { color: #64748b; }
+.hljs-number { color: #f59e0b; }
+.hljs-function { color: #3b82f6; }

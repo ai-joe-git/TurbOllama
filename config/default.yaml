@@ -1,0 +1,53 @@
+# TurboLlama Default Configuration
+
+# Hardware Configuration
+hardware:
+  auto_detect: true
+  gpu_backend: "auto"  # auto, cuda, vulkan, rocm, xpu, cpu
+  gpu_layers: -1  # -1 means all layers on GPU
+  gpu_memory_fraction: 0.9
+  cpu_threads: null  # null means auto-detect
+  prefer_gpu: true
+  numa_enabled: true
+
+# Model Configuration
+models:
+  default: "llama2:7b"
+  cache_dir: "~/.turbollama/models"
+  auto_download: true
+  context_size: 4096
+  batch_size: 512
+  max_tokens: 2048
+  temperature: 0.7
+  top_p: 0.9
+  top_k: 40
+  repeat_penalty: 1.1
+
+# API Server Configuration
+api:
+  host: "0.0.0.0"
+  port: 11434
+  cors_origins:
+    - "*"
+  enable_streaming: true
+  enable_function_calling: true
+  max_concurrent_requests: 10
+  request_timeout: 300
+
+# Gradio Interface Configuration
+interface:
+  port: 7860
+  theme: "dark"
+  enable_voice: true
+  show_performance: true
+  custom_css: null
+  enable_file_upload: true
+  max_file_size: 100  # MB
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: null
+  max_size: 10  # MB
+  backup_count: 5

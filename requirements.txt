@@ -1,0 +1,31 @@
+# Core dependencies
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+gradio>=4.0.0
+pydantic>=2.0.0
+pyyaml>=6.0
+requests>=2.31.0
+aiofiles>=23.0.0
+python-multipart>=0.0.6
+
+# llama.cpp integration
+llama-cpp-python>=0.2.20
+
+# GPU support
+torch>=2.0.0
+intel-extension-for-pytorch  # Intel GPU support
+
+# Model management
+huggingface-hub>=0.17.0
+transformers>=4.35.0
+
+# Monitoring and utilities
+psutil>=5.9.0
+GPUtil>=1.4.0
+py-cpuinfo>=9.0.0
+
+# Development dependencies (optional)
+pytest>=7.4.0
+black>=23.0.0
+flake8>=6.0.0
+pre-commit>=3.0.0

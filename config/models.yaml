@@ -1,0 +1,86 @@
+# Model Registry and Mappings
+
+# Ollama to HuggingFace mappings
+ollama_to_hf:
+  "llama2:7b": "TheBloke/Llama-2-7B-Chat-GGUF"
+  "llama2:13b": "TheBloke/Llama-2-13B-Chat-GGUF"
+  "llama2:70b": "TheBloke/Llama-2-70B-Chat-GGUF"
+  "codellama:7b": "TheBloke/CodeLlama-7B-Instruct-GGUF"
+  "codellama:13b": "TheBloke/CodeLlama-13B-Instruct-GGUF"
+  "codellama:34b": "TheBloke/CodeLlama-34B-Instruct-GGUF"
+  "mistral:7b": "TheBloke/Mistral-7B-Instruct-v0.1-GGUF"
+  "mixtral:8x7b": "TheBloke/Mixtral-8x7B-Instruct-v0.1-GGUF"
+  "llava:7b": "mys/ggml_llava-v1.5-7b"
+  "llava:13b": "mys/ggml_llava-v1.5-13b"
+  "phi:2.7b": "microsoft/phi-2-gguf"
+  "gemma:2b": "google/gemma-2b-gguf"
+  "gemma:7b": "google/gemma-7b-gguf"
+
+# Popular HuggingFace repositories
+popular_repos:
+  - "microsoft/DialoGPT-medium-GGUF"
+  - "microsoft/DialoGPT-large-GGUF"
+  - "TheBloke/Llama-2-7B-Chat-GGUF"
+  - "TheBloke/Llama-2-13B-Chat-GGUF"
+  - "TheBloke/CodeLlama-7B-Instruct-GGUF"
+  - "TheBloke/Mistral-7B-Instruct-v0.1-GGUF"
+  - "TheBloke/Mixtral-8x7B-Instruct-v0.1-GGUF"
+  - "TheBloke/Zephyr-7B-Beta-GGUF"
+  - "TheBloke/OpenHermes-2.5-Mistral-7B-GGUF"
+
+# Model capabilities
+model_capabilities:
+  text_models:
+    - "llama2"
+    - "codellama"
+    - "mistral"
+    - "mixtral"
+    - "phi"
+    - "gemma"
+    - "zephyr"
+    - "openhermes"
+  
+  vision_models:
+    - "llava"
+    - "bakllava"
+    - "moondream"
+  
+  code_models:
+    - "codellama"
+    - "deepseek-coder"
+    - "starcoder"
+    - "wizardcoder"
+
+# Quantization preferences
+quantization_preference:
+  - "Q4_K_M"
+  - "Q4_K_S"
+  - "Q5_K_M"
+  - "Q5_K_S"
+  - "Q6_K"
+  - "Q4_0"
+  - "Q5_0"
+  - "Q8_0"
+  - "F16"
+
+# Hardware-specific recommendations
+hardware_recommendations:
+  low_memory:  # < 8GB RAM
+    models: ["phi:2.7b", "gemma:2b"]
+    max_context: 2048
+    quantization: ["Q4_0", "Q4_K_S"]
+  
+  medium_memory:  # 8-16GB RAM
+    models: ["llama2:7b", "mistral:7b", "codellama:7b"]
+    max_context: 4096
+    quantization: ["Q4_K_M", "Q5_K_S"]
+  
+  high_memory:  # > 16GB RAM
+    models: ["llama2:13b", "codellama:13b", "mixtral:8x7b"]
+    max_context: 8192
+    quantization: ["Q5_K_M", "Q6_K", "Q8_0"]
+  
+  gpu_accelerated:  # With dedicated GPU
+    models: ["llama2:70b", "codellama:34b"]
+    max_context: 16384
+    quantization: ["Q4_K_M", "Q5_K_M", "Q6_K"]

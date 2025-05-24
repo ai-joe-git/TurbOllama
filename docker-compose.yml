@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  turbollama:
+    build: .
+    ports:
+      - "11434:11434"  # API port
+      - "7860:7860"    # Gradio interface port
+    volumes:
+      - ./models:/app/models
+      - ./config:/app/config
+      - ./logs:/app/logs
+    environment:
+      - TURBOLLAMA_GPU_BACKEND=auto
+      - TURBOLLAMA_LOG_LEVEL=INFO
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # Optional: Add a reverse proxy
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - turbollama
+    restart: unless-stopped
+
+volumes:
+  models:
+  logs:
